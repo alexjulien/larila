@@ -1,0 +1,62 @@
+{% extends "main.html" %}
+{% block search %}
+<!-- Subscribe -->
+
+<!-- g-fullheight--xs g-bg-position--center swiper-slide swiper-slide-duplicate swiper-slide-active -->
+
+
+<div class="js__parallax-window g-fullheight--xs" style="background: url(../static/img/1920x1080/100.jpg) 50% 0 no-repeat fixed;">
+  <div class="g-text-center--xs g-padding-y-80--xs g-padding-y-125--sm">
+    <div class="g-margin-b-80--xs">
+      <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--white-opacity g-letter-spacing--2 g-margin-b-25--xs">Larilá</p>
+      <h2 class="g-font-size-32--xs g-font-size-36--md g-color--white">busca</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-9 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <form class="input-group" action="/search" method="post">
+          <input type="text" class="form-control s-form-v1__input g-radius--left-50" name="search_term" placeholder="…y canta" autofocus>
+          <span class="input-group-btn">
+              <!-- <button type="submit" class="s-btn s-btn-icon--md s-btn-icon--white-brd s-btn--white-brd g-radius--right-50"><i class="ti-arrow-right"></i></button> -->
+              <button type="submit" name="opt" value="karaoke" class="s-btn s-btn-icon--md s-btn-icon--white-brd s-btn--white-brd "><i class="ti-arrow-right">Karaoke</i></button>
+              <button type="submit" name="opt" value="letra" class="s-btn s-btn-icon--md s-btn-icon--white-brd s-btn--white-brd g-radius--right-50"><i class="ti-arrow-right">Letra</i></button>
+          </span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Subscribe -->
+
+
+
+
+<section class="mbr-section mbr-parallax-background mbr-after-navbar" id="bigSearch"
+         style="background-image: url(/static/images/14334778-638234476334902-2350730790460981248-n-2000x1196-71.jpg); padding-top: 240px; padding-bottom: 240px;">
+
+  <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1 ">
+        <h1>Larilá</h1>
+        <h2>Busca...</h2>
+        <form action="/search" method="post">
+          <div class="col-xs-12 col-lg-8">
+            <input type="text" class="form-control" name="search_term" placeholder="…y canta" id="search_term" autofocus>
+          </div>
+          <div class="col-xs-12 col-lg-4 input-group-btn">
+            <button type="submit" name="opt" value="karaoke" class="btn btn-primary">Karaoke</button>
+            <button type="submit" name="opt" value="letra"   class="btn btn-primary">Letra</button>
+            <button type="submit" name="opt" value=""        class="btn btn-primary">Normal</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+{% block results %}
+<!-- no results -->
+{% endblock %}
+static

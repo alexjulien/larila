@@ -1,0 +1,72 @@
+{% extends "main.html" %}
+
+{% block search_top %}
+<form class="input-group" action="/search" method="post">
+  <input type="text" class="form-control s-form-v1__input g-radius--left-50" name="search_term" placeholder="…y canta">
+  <span class="input-group-btn">
+      <!-- <button type="submit" class="s-btn s-btn-icon--md s-btn-icon--white-brd s-btn--white-brd g-radius--right-50"><i class="ti-arrow-right"></i></button> -->
+      <button type="submit" class="s-btn s-btn-icon--md s-btn-icon--white-brd s-btn--white-brd "><i class="ti-arrow-right">Karaoke</i></button>
+      <button type="submit" class="s-btn s-btn-icon--md s-btn-icon--white-brd s-btn--white-brd g-radius--right-50"><i class="ti-arrow-right">Letra</i></button>
+  </span>
+</form>
+
+{% endblock %}
+
+{% block results %}
+<section class="mbr-section mbr-section__container article" id="resultsTitle_0"
+         style="background-color: rgb(255, 255, 255); padding-top: 20px; padding-bottom: 20px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="mbr-section-title display-2">{{ search_term|title }}</h3>
+        <small class="mbr-section-subtitle">{{ opt|title }}</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mbr-cards mbr-section mbr-section-nopadding" id="results"
+         style="background-color: rgb(255, 255, 255);">
+  <div class="row mbr-cards-row">
+  {% set i = 0 %}
+  {% for r in results %}
+    <div class="mbr-cards-col col-xs-12 col-lg-2" style="padding-top: 80px; padding-bottom: 80px;">
+      <div class="container">
+        <div class="card cart-block">
+          <div class="card-img"><img src="{{ r.img }}" class="card-img-top"></div>
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-primary" href="{{ r.fullscreen_auto }}" target="show">
+              <i class="fa fa-windows-maximize" title="Pantalla completa">Completa</i>
+            </a>
+            <a class="btn btn-primary" href="{{ r.link }}" target="show">
+              <i class="fa fa-windows-restore" title="Mostrar normal">Normal  </i>
+            </a>
+          </div>
+          <div class="card-block">
+            <h5 class="card-title">{{ r.title }}</h5>
+            <p class="card-subtitle">{{ r.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--
+fa fa-desktop
+fa fa-external-link
+fa fa-minus-square-o
+fa fa-plus-square-o
+fa fa-window-maximize
+fa fa-window-restore
+-->
+    {% set i = i+1  %}
+    {% if (i%4 == 0) and (i>0) %}
+  </div>
+</section>
+<section class="mbr-cards mbr-section mbr-section-nopadding" id="resultsTitle_{{i%4}}"
+         style="background-color: rgb(255, 255, 255);">
+  <div class="mbr-cards-row row">
+    {% endif %}
+  {% endfor %}
+  </div>
+</section>
+{% endblock %}
